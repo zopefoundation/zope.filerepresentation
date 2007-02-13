@@ -18,13 +18,10 @@ $Id$
 
 import os
 
-try:
-    from setuptools import setup, Extension
-except ImportError, e:
-    from distutils.core import setup, Extension
+from setuptools import setup, find_packages
 
 setup(name='zope.filerepresentation',
-      version='3.4-dev',
+      version='3.4dev',
       url='http://svn.zope.org/zope.filerepresentation',
       license='ZPL 2.1',
       description='Zope filerepresentation',
@@ -37,7 +34,7 @@ setup(name='zope.filerepresentation',
                         "file-system synchronization, FTP,"
                         "PUT, and WebDAV.",
 
-      packages=['zope', 'zope.filerepresentation'],
+      packages=find_packages('src'),
       package_dir = {'': 'src'},
 
       namespace_packages=['zope',],
