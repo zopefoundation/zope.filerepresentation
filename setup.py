@@ -40,7 +40,7 @@ setup(name='zope.filerepresentation',
       namespace_packages=['zope',],
       tests_require = ['zope.testing'],
       install_requires=['zope.interface',
-                        'zope.app.container',],
+                        'zope.app',],
       include_package_data = True,
 
       zip_safe = False,
