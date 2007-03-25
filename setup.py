@@ -36,12 +36,10 @@ setup(name='zope.filerepresentation',
 
       packages=find_packages('src'),
       package_dir = {'': 'src'},
-
-      namespace_packages=['zope',],
-      tests_require = ['zope.testing'],
+      namespace_packages=['zope'],
       install_requires=['zope.interface',
-                        'zope.app',],
+                        'zope.app.container'
+                        ],
       include_package_data = True,
-
       zip_safe = False,
       )
