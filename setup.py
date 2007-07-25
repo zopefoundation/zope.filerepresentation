@@ -33,11 +33,11 @@ setup(name='zope.filerepresentation',
                        "representations of objects, such as"
                         "file-system synchronization, FTP,"
                         "PUT, and WebDAV.",
-
       packages=find_packages('src'),
       package_dir = {'': 'src'},
       namespace_packages=['zope'],
-      install_requires=['zope.interface',
+      install_requires=['setuptools',
+                        'zope.interface',
                         'zope.app.container'
                         ],
       include_package_data = True,
