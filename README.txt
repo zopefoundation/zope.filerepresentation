@@ -1,5 +1,6 @@
-zope.filerepresentation Package Readme
-======================================
+==============================
+File Representation Interfaces
+==============================
 
 Overview
 --------

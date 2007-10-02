@@ -15,31 +15,45 @@
 
 $Id$
 """
-
 import os
-
 from setuptools import setup, find_packages
 
+def read(*rnames):
+    return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
+
 setup(name='zope.filerepresentation',
-      version = '3.4.0b1',
-      url='http://svn.zope.org/zope.filerepresentation',
-      license='ZPL 2.1',
-      description='Zope filerepresentation',
+      version = '3.4.0',
       author='Zope Corporation and Contributors',
       author_email='zope3-dev@zope.org',
-      long_description="File-system representation interfaces."
-                       "The interfaces defined here are used for"
-                       "file-system and file-system-like"
-                       "representations of objects, such as"
-                        "file-system synchronization, FTP,"
-                        "PUT, and WebDAV.",
+      description='File-system Representation Interfaces',
+      long_description=(
+          read('README.txt')
+          + '\n\n' +
+          read('CHANGES.txt')
+          ),
+      keywords = "zope3 filesystem representation",
+      classifiers = [
+          'Development Status :: 5 - Production/Stable',
+          'Environment :: Web Environment',
+          'Intended Audience :: Developers',
+          'License :: OSI Approved :: Zope Public License',
+          'Programming Language :: Python',
+          'Natural Language :: English',
+          'Operating System :: OS Independent',
+          'Topic :: Internet :: WWW/HTTP',
+          'Framework :: Zope3'],
+      url='http://cheeseshop.python.org/pypi/zope.filerepresentation',
+      license='ZPL 2.1',
       packages=find_packages('src'),
       package_dir = {'': 'src'},
       namespace_packages=['zope'],
+      extras_require = dict(
+          test=['zope.testing',
+                ]),
       install_requires=['setuptools',
                         'zope.interface',
                         'zope.app.container'
                         ],
       include_package_data = True,
-      zip_safe = False,
+      zip_safe = True,
       )
