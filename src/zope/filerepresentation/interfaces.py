@@ -87,7 +87,7 @@ $Id$
 __docformat__ = 'restructuredtext'
 
 from zope.interface import Interface
-from zope.app.container.interfaces import IReadContainer, IWriteContainer
+from zope.container.interfaces import IReadContainer, IWriteContainer
 
 class IReadFile(Interface):
     """Provide read access to file data

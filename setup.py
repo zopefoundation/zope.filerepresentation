@@ -52,7 +52,7 @@ setup(name='zope.filerepresentation',
                 ]),
       install_requires=['setuptools',
                         'zope.interface',
-                        'zope.app.container'
+                        'zope.container'
                         ],
       include_package_data = True,
       zip_safe = True,
