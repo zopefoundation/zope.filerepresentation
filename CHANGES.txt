@@ -5,7 +5,7 @@ CHANGES
 3.5.1 (unreleased)
 ------------------
 
-- ...
+- Removed DEPENDENCIES.cfg
 
 3.5.0 (2009-01-31)
 ------------------

@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# Copyright (c) 2006 Zope Corporation and Contributors.
+# Copyright (c) 2006-2009 Zope Corporation and Contributors.
 # All Rights Reserved.
 #
 # This software is subject to the provisions of the Zope Public License,
@@ -22,17 +22,17 @@ def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
 setup(name='zope.filerepresentation',
-      version = '3.5.1dev',
+      version='3.5.1dev',
       author='Zope Corporation and Contributors',
-      author_email='zope3-dev@zope.org',
+      author_email='zope-dev@zope.org',
       description='File-system Representation Interfaces',
       long_description=(
           read('README.txt')
           + '\n\n' +
           read('CHANGES.txt')
           ),
-      keywords = "zope3 filesystem representation",
-      classifiers = [
+      keywords="zope3 filesystem representation",
+      classifiers=[
           'Development Status :: 5 - Production/Stable',
           'Environment :: Web Environment',
           'Intended Audience :: Developers',
@@ -42,18 +42,18 @@ setup(name='zope.filerepresentation',
           'Operating System :: OS Independent',
           'Topic :: Internet :: WWW/HTTP',
           'Framework :: Zope3'],
-      url='http://cheeseshop.python.org/pypi/zope.filerepresentation',
+      url='http://pypi.python.org/pypi/zope.filerepresentation',
       license='ZPL 2.1',
       packages=find_packages('src'),
-      package_dir = {'': 'src'},
+      package_dir={'': 'src'},
       namespace_packages=['zope'],
-      extras_require = dict(
+      extras_require=dict(
           test=['zope.testing',
                 ]),
       install_requires=['setuptools',
                         'zope.interface',
                         'zope.container'
                         ],
-      include_package_data = True,
-      zip_safe = True,
+      include_package_data=True,
+      zip_safe=True,
       )
