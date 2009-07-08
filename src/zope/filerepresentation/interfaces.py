@@ -87,7 +87,9 @@ $Id$
 __docformat__ = 'restructuredtext'
 
 from zope.interface import Interface
-from zope.container.interfaces import IReadContainer, IWriteContainer
+from zope.interface.common.mapping import IEnumerableMapping, IItemMapping, \
+    IReadMapping
+
 
 class IReadFile(Interface):
     """Provide read access to file data
@@ -110,13 +112,20 @@ class IWriteFile(Interface):
 # TODO: We will add ILargeReadFile and ILargeWriteFile to efficiently
 # handle large data.
 
-class IReadDirectory(IReadContainer):
+class IReadDirectory(IEnumerableMapping, IItemMapping, IReadMapping):
     """Objects that should be treated as directories for reading
     """
 
-class IWriteDirectory(IWriteContainer):
+class IWriteDirectory(Interface):
     """Objects that should be treated as directories for writing
     """
+
+    def __setitem__(name, object):
+        """Add the given `object` to the directory under the given name."""
+
+    def __delitem__(name):
+        """Delete the named object from the directory."""
+
 
 class IDirectoryFactory(Interface):
 

@@ -7,6 +7,10 @@ CHANGES
 
 - Removed DEPENDENCIES.cfg
 
+- Removed dependency on zope.container: IReadDirectory and IWriteDirectory
+  inherit only from interfaces defined in zope.interface and
+  zope.interface.common.mapping.
+
 3.5.0 (2009-01-31)
 ------------------
 
