@@ -5,6 +5,11 @@ CHANGES
 3.5.1 (unreleased)
 ------------------
 
+- Added IRawReadFile and IRawWriteFile interfaces. These extend IReadFile and
+  IWritefile, respectively, to behave pretty much like a standard Python file
+  object with a few embellishments. This in turn allows efficient, iterator-
+  based implementations of file reading and writing.
+
 - Removed DEPENDENCIES.cfg
 
 - Removed dependency on zope.container: IReadDirectory and IWriteDirectory

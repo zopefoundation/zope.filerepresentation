@@ -38,7 +38,7 @@ There are three issues we need to deal with:
     We must have a complete lossless data representation for file-system
     synchronization. This is achieved through serialization of:
 
-    - All annotations (not just properties, and
+    - All annotations (not just properties), and
 
     - Extra data.
 
@@ -87,6 +87,8 @@ $Id$
 __docformat__ = 'restructuredtext'
 
 from zope.interface import Interface
+from zope import schema
+
 from zope.interface.common.mapping import IEnumerableMapping, IItemMapping, \
     IReadMapping
 
@@ -100,7 +102,7 @@ class IReadFile(Interface):
         """
 
     def size():
-        """Return the data length
+        """Return the data length in bytes.
         """
 
 class IWriteFile(Interface):
@@ -109,8 +111,111 @@ class IWriteFile(Interface):
         """Update the file data
         """
 
-# TODO: We will add ILargeReadFile and ILargeWriteFile to efficiently
-# handle large data.
+class ICommonFileOperations(Interface):
+    """Common file operations used by IRawReadFile and IRawWriteFile
+    """
+    
+    mimeType = schema.ASCIILine(
+            title=u"File MIME type",
+            description=u"Provided if it makes sense for this file data"    +
+                        u"May be set prior to writing data to a file that " +
+                        u"is writeable. It is an error to set this on a "   +
+                        u"file that is not writable.",
+            readonly=True,
+        )
+    
+    encoding = schema.Bool(
+            title=u"The encoding that this file uses",
+            description=u"Provided if it makes sense for this file data"    +
+                        u"May be set prior to writing data to a file that " +
+                        u"is writeable. It is an error to set this on a "   +
+                        u"file that is not writable.",
+            required=False,
+        )
+    
+    closed = schema.Bool(
+            title=u"Is the file closed?",
+            required=True,
+        )
+    
+    name = schema.TextLine(
+            title=u"A representative file name",
+            description=u"Provided if it makes sense for this file data"    +
+                        u"May be set prior to writing data to a file that " +
+                        u"is writeable. It is an error to set this on a "   +
+                        u"file that is not writable.",
+            required=False,
+        )
+
+    def seek(offset, whence=None):
+        """Seek the file. See Python documentation for ``file`` for
+        details.
+        """
+    
+    def tell():
+        """Return the file's current position.
+        """
+    
+    def close():
+        """Close the file. See Python documentation for ``file`` for
+        details.
+        """
+
+class IRawReadFile(IReadFile, ICommonFileOperations):
+    """Specialisation of IReadFile to make it act more like a Python file
+    object.
+    """
+    
+    def read(size=None):
+        """Read at most ``size`` bytes of file data. If ``size`` is None,
+        return all the file data.
+        """
+    
+    def readline(size=None):
+        """Read one entire line from the file. See Python documentation for
+        ``file`` for details.
+        """
+    
+    def readlines(sizehint=None):
+        """Read until EOF using readline() and return a list containing the
+        lines thus read. See Python documentation for ``file`` for details.
+        """
+    
+    def __iter__():
+        """Return an iterator for the file.
+        
+        Note that unlike a Python standard ``file``, this does not necessarily
+        have to return data line-by-line if doing so is inefficient.
+        """
+    
+    def next():
+        """Iterator protocol. See Python documentation for ``file`` for
+        details.
+        """
+
+class IRawWriteFile(IWriteFile, ICommonFileOperations):
+    """Specialisation of IWriteFile to make it act more like a Python file
+    object.
+    """
+    
+    def write(data):
+        """Write a chunk of data to the file. See Python documentation for
+        ``file`` for details.
+        """
+    
+    def writelines(sequence):
+        """Write a sequence of strings to the file. See Python documentation
+        for ``file`` for details.
+        """
+    
+    def truncate(size):
+        """Truncate the file. See Python documentation for ``file`` for
+        details.
+        """
+    
+    def flush():
+        """Flush the file. See Python documentation for ``file`` for details.
+        """
 
 class IReadDirectory(IEnumerableMapping, IItemMapping, IReadMapping):
     """Objects that should be treated as directories for reading
