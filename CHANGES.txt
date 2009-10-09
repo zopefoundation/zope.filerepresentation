@@ -2,7 +2,7 @@
 CHANGES
 =======
 
-3.5.1 (unreleased)
+3.6.0 (2009-10-08)
 ------------------
 
 - Added IRawReadFile and IRawWriteFile interfaces. These extend IReadFile and
