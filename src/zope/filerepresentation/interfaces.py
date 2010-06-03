@@ -81,8 +81,6 @@ There are three issues we need to deal with:
 
       For reading, there must be a class adapter to `IReadSync`.  We will
       then apply rules similar to those above.
-
-$Id$
 """
 __docformat__ = 'restructuredtext'
 
