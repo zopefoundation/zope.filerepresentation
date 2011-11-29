@@ -5,6 +5,9 @@ CHANGES
 3.6.1 (unreleased)
 ------------------
 
+- Add undeclared ``zope.schema`` dependency.
+- Remove zope.testing test dependency and test extra.
+
 3.6.0 (2009-10-08)
 ------------------
 
