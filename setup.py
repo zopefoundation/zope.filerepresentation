@@ -25,7 +25,7 @@ def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
 setup(name='zope.filerepresentation',
-      version='3.6.1',
+      version='4.0.0dev',
       author='Zope Corporation and Contributors',
       author_email='zope-dev@zope.org',
       description='File-system Representation Interfaces',
@@ -41,6 +41,9 @@ setup(name='zope.filerepresentation',
           'Intended Audience :: Developers',
           'License :: OSI Approved :: Zope Public License',
           'Programming Language :: Python',
+          'Programming Language :: Python :: 2',
+          'Programming Language :: Python :: 2.6',
+          'Programming Language :: Python :: 2.7',
           'Natural Language :: English',
           'Operating System :: OS Independent',
           'Topic :: Internet :: WWW/HTTP',
