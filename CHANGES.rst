@@ -5,6 +5,7 @@ CHANGES
 4.0.0 (unreleased)
 ------------------
 
+- aDded support for Python 3.2, 3.3 and PyPy.
 - Dropped support for Python 2.4 / 2.5.
 
 3.6.1 (2011-11-29)

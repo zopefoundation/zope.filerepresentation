@@ -112,7 +112,7 @@ class IWriteFile(Interface):
 class ICommonFileOperations(Interface):
     """Common file operations used by IRawReadFile and IRawWriteFile
     """
-    
+
     mimeType = schema.ASCIILine(
             title=u"File MIME type",
             description=u"Provided if it makes sense for this file data"    +
@@ -121,7 +121,7 @@ class ICommonFileOperations(Interface):
                         u"file that is not writable.",
             readonly=True,
         )
-    
+
     encoding = schema.Bool(
             title=u"The encoding that this file uses",
             description=u"Provided if it makes sense for this file data"    +
@@ -130,12 +130,12 @@ class ICommonFileOperations(Interface):
                         u"file that is not writable.",
             required=False,
         )
-    
+
     closed = schema.Bool(
             title=u"Is the file closed?",
             required=True,
         )
-    
+
     name = schema.TextLine(
             title=u"A representative file name",
             description=u"Provided if it makes sense for this file data"    +
@@ -149,11 +149,11 @@ class ICommonFileOperations(Interface):
         """Seek the file. See Python documentation for ``file`` for
         details.
         """
-    
+
     def tell():
         """Return the file's current position.
         """
-    
+
     def close():
         """Close the file. See Python documentation for ``file`` for
         details.
@@ -163,29 +163,29 @@ class IRawReadFile(IReadFile, ICommonFileOperations):
     """Specialisation of IReadFile to make it act more like a Python file
     object.
     """
-    
+
     def read(size=None):
         """Read at most ``size`` bytes of file data. If ``size`` is None,
         return all the file data.
         """
-    
+
     def readline(size=None):
         """Read one entire line from the file. See Python documentation for
         ``file`` for details.
         """
-    
+
     def readlines(sizehint=None):
         """Read until EOF using readline() and return a list containing the
         lines thus read. See Python documentation for ``file`` for details.
         """
-    
+
     def __iter__():
         """Return an iterator for the file.
-        
+
         Note that unlike a Python standard ``file``, this does not necessarily
         have to return data line-by-line if doing so is inefficient.
         """
-    
+
     def next():
         """Iterator protocol. See Python documentation for ``file`` for
         details.
@@ -195,22 +195,22 @@ class IRawWriteFile(IWriteFile, ICommonFileOperations):
     """Specialisation of IWriteFile to make it act more like a Python file
     object.
     """
-    
+
     def write(data):
         """Write a chunk of data to the file. See Python documentation for
         ``file`` for details.
         """
-    
+
     def writelines(sequence):
         """Write a sequence of strings to the file. See Python documentation
         for ``file`` for details.
         """
-    
+
     def truncate(size):
         """Truncate the file. See Python documentation for ``file`` for
         details.
         """
-    
+
     def flush():
         """Flush the file. See Python documentation for ``file`` for details.
         """
