@@ -2,7 +2,7 @@
 CHANGES
 =======
 
-4.0.0 (unreleased)
+4.0.0 (2013-02-11)
 ------------------
 
 - aDded support for Python 3.2, 3.3 and PyPy.
