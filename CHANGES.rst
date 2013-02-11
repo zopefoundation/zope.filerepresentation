@@ -2,16 +2,16 @@
 CHANGES
 =======
 
-4.0.1 (unreleased)
+4.0.1 (2013-02-11)
 ------------------
 
-- Nothing changed yet.
+- Add tox.ini to release.
 
 
 4.0.0 (2013-02-11)
 ------------------
 
-- aDded support for Python 3.2, 3.3 and PyPy.
+- Added support for Python 3.2, 3.3 and PyPy.
 - Dropped support for Python 2.4 / 2.5.
 
 3.6.1 (2011-11-29)
@@ -23,14 +23,14 @@ CHANGES
 3.6.0 (2009-10-08)
 ------------------
 
-- Added `IRawReadFile` and `IRawWriteFile` interfaces. These extend `IReadFile` and
-  `IWritefile`, respectively, to behave pretty much like a standard Python file
-  object with a few embellishments. This in turn allows efficient, iterator-
-  based implementations of file reading and writing.
+- Added `IRawReadFile` and `IRawWriteFile` interfaces. These extend
+  `IReadFile` and `IWritefile`, respectively, to behave pretty much like a
+  standard Python file object with a few embellishments. This in turn allows
+  efficient, iterator- based implementations of file reading and writing.
 
-- Removed dependency on ``zope.container``: `IReadDirectory` and `IWriteDirectory`
-  inherit only from interfaces defined in ``zope.interface`` and
-  ``zope.interface.common.mapping``.
+- Removed dependency on ``zope.container``: `IReadDirectory` and
+  `IWriteDirectory` inherit only from interfaces defined in ``zope.interface``
+  and ``zope.interface.common.mapping``.
 
 3.5.0 (2009-01-31)
 ------------------
