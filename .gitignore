@@ -4,3 +4,5 @@
 .coverage
 coverage.xml
 nosetests.xml
+
+docs/_build/

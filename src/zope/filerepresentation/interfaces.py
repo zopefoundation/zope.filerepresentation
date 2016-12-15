@@ -104,18 +104,19 @@ class IReadFile(Interface):
         """
 
 class IWriteFile(Interface):
+    """Provide write access to file data."""
 
     def write(data):
         """Update the file data
         """
 
 class ICommonFileOperations(Interface):
-    """Common file operations used by IRawReadFile and IRawWriteFile
+    """Common file operations used by :class:`IRawReadFile` and :class:`IRawWriteFile`
     """
 
     mimeType = schema.ASCIILine(
             title=u"File MIME type",
-            description=u"Provided if it makes sense for this file data"    +
+            description=u"Provided if it makes sense for this file data. "    +
                         u"May be set prior to writing data to a file that " +
                         u"is writeable. It is an error to set this on a "   +
                         u"file that is not writable.",
@@ -124,7 +125,7 @@ class ICommonFileOperations(Interface):
 
     encoding = schema.Bool(
             title=u"The encoding that this file uses",
-            description=u"Provided if it makes sense for this file data"    +
+            description=u"Provided if it makes sense for this file data. "    +
                         u"May be set prior to writing data to a file that " +
                         u"is writeable. It is an error to set this on a "   +
                         u"file that is not writable.",
@@ -138,7 +139,7 @@ class ICommonFileOperations(Interface):
 
     name = schema.TextLine(
             title=u"A representative file name",
-            description=u"Provided if it makes sense for this file data"    +
+            description=u"Provided if it makes sense for this file data. "    +
                         u"May be set prior to writing data to a file that " +
                         u"is writeable. It is an error to set this on a "   +
                         u"file that is not writable.",
@@ -146,7 +147,7 @@ class ICommonFileOperations(Interface):
         )
 
     def seek(offset, whence=None):
-        """Seek the file. See Python documentation for ``file`` for
+        """Seek the file. See Python documentation for :class:`io.IOBase` for
         details.
         """
 
@@ -155,7 +156,7 @@ class ICommonFileOperations(Interface):
         """
 
     def close():
-        """Close the file. See Python documentation for ``file`` for
+        """Close the file. See Python documentation for :class:`io.IOBase` for
         details.
         """
 
@@ -171,23 +172,23 @@ class IRawReadFile(IReadFile, ICommonFileOperations):
 
     def readline(size=None):
         """Read one entire line from the file. See Python documentation for
-        ``file`` for details.
+        :class:`io.IOBase` for details.
         """
 
     def readlines(sizehint=None):
         """Read until EOF using readline() and return a list containing the
-        lines thus read. See Python documentation for ``file`` for details.
+        lines thus read. See Python documentation for :class:`io.IOBase` for details.
         """
 
     def __iter__():
         """Return an iterator for the file.
 
-        Note that unlike a Python standard ``file``, this does not necessarily
+        Note that unlike a Python standard :class:`file`, this does not necessarily
         have to return data line-by-line if doing so is inefficient.
         """
 
     def next():
-        """Iterator protocol. See Python documentation for ``file`` for
+        """Iterator protocol. See Python documentation for :class:`io.IOBase` for
         details.
         """
 
@@ -198,21 +199,21 @@ class IRawWriteFile(IWriteFile, ICommonFileOperations):
 
     def write(data):
         """Write a chunk of data to the file. See Python documentation for
-        ``file`` for details.
+        :class:`io.RawIOBase` for details.
         """
 
     def writelines(sequence):
         """Write a sequence of strings to the file. See Python documentation
-        for ``file`` for details.
+        for :class:`io.IOBase` for details.
         """
 
     def truncate(size):
-        """Truncate the file. See Python documentation for ``file`` for
+        """Truncate the file. See Python documentation for :class:`io.IOBase` for
         details.
         """
 
     def flush():
-        """Flush the file. See Python documentation for ``file`` for details.
+        """Flush the file. See Python documentation for :class:`io.IOBase` for details.
         """
 
 class IReadDirectory(IEnumerableMapping, IItemMapping, IReadMapping):
@@ -231,6 +232,7 @@ class IWriteDirectory(Interface):
 
 
 class IDirectoryFactory(Interface):
+    """Factory for :class:`IReadDirectory`/:class:`IWriteDirectory` objects."""
 
     def __call__(name):
         """Create a directory
@@ -241,6 +243,7 @@ class IDirectoryFactory(Interface):
         """
 
 class IFileFactory(Interface):
+    """Factory for :class:`IReadFile`/:class:`IWriteFile` objects."""
 
     def __call__(name, content_type, data):
         """Create a file
