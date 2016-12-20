@@ -22,10 +22,11 @@ import os
 from setuptools import setup, find_packages
 
 def read(*rnames):
-    return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
+    with open(os.path.join(os.path.dirname(__file__), *rnames)) as f:
+        return f.read()
 
 setup(name='zope.filerepresentation',
-      version='4.2.0.dev0',
+      version=read('version.txt').strip(),
       author='Zope Corporation and Contributors',
       author_email='zope-dev@zope.org',
       description='File-system Representation Interfaces',
@@ -53,7 +54,7 @@ setup(name='zope.filerepresentation',
           'Operating System :: OS Independent',
           'Topic :: Internet :: WWW/HTTP',
           'Framework :: Zope3'],
-      url='http://pypi.python.org/pypi/zope.filerepresentation',
+      url='http://zopefilerepresentation.readthedocs.io',
       license='ZPL 2.1',
       packages=find_packages('src'),
       package_dir={'': 'src'},
