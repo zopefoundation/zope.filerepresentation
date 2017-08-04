@@ -1,9 +1,15 @@
 include *.rst
 include *.txt
 include tox.ini
+include .travis.yml
+include .coveragerc
 include bootstrap.py
 include buildout.cfg
 
 recursive-include src *
+recursive-include docs *.py
+recursive-include docs *.rst
+recursive-include docs Makefile
+
 
 global-exclude *.pyc

@@ -25,45 +25,53 @@ def read(*rnames):
     with open(os.path.join(os.path.dirname(__file__), *rnames)) as f:
         return f.read()
 
-setup(name='zope.filerepresentation',
-      version=read('version.txt').strip(),
-      author='Zope Corporation and Contributors',
-      author_email='zope-dev@zope.org',
-      description='File-system Representation Interfaces',
-      long_description=(
-          read('README.rst')
-          + '\n\n' +
-          read('CHANGES.rst')
-          ),
-      keywords="zope3 filesystem representation",
-      classifiers=[
-          'Development Status :: 5 - Production/Stable',
-          'Environment :: Web Environment',
-          'Intended Audience :: Developers',
-          'License :: OSI Approved :: Zope Public License',
-          'Programming Language :: Python',
-          'Programming Language :: Python :: 2',
-          'Programming Language :: Python :: 2.7',
-          'Programming Language :: Python :: 3',
-          'Programming Language :: Python :: 3.3',
-          'Programming Language :: Python :: 3.4',
-          'Programming Language :: Python :: 3.5',
-          'Programming Language :: Python :: Implementation :: CPython',
-          'Programming Language :: Python :: Implementation :: PyPy',
-          'Natural Language :: English',
-          'Operating System :: OS Independent',
-          'Topic :: Internet :: WWW/HTTP',
-          'Framework :: Zope3'],
-      url='http://zopefilerepresentation.readthedocs.io',
-      license='ZPL 2.1',
-      packages=find_packages('src'),
-      package_dir={'': 'src'},
-      namespace_packages=['zope'],
-      install_requires=['setuptools',
-                        'zope.interface',
-                        'zope.schema',
-                        ],
-      include_package_data=True,
-      test_suite='zope.filerepresentation.tests.test_suite',
-      zip_safe=True,
-      )
+setup(
+    name='zope.filerepresentation',
+    version=read('version.txt').strip(),
+    author='Zope Corporation and Contributors',
+    author_email='zope-dev@zope.org',
+    description='File-system Representation Interfaces',
+    long_description=(
+        read('README.rst')
+        + '\n\n' +
+        read('CHANGES.rst')
+    ),
+    keywords="zope3 filesystem representation",
+    classifiers=[
+        'Development Status :: 5 - Production/Stable',
+        'Environment :: Web Environment',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: Zope Public License',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: Implementation :: CPython',
+        'Programming Language :: Python :: Implementation :: PyPy',
+        'Natural Language :: English',
+        'Operating System :: OS Independent',
+        'Topic :: Internet :: WWW/HTTP',
+        'Framework :: Zope3',
+    ],
+    url='http://zopefilerepresentation.readthedocs.io',
+    license='ZPL 2.1',
+    packages=find_packages('src'),
+    package_dir={'': 'src'},
+    namespace_packages=['zope'],
+    install_requires=[
+        'setuptools',
+        'zope.interface',
+        'zope.schema',
+    ],
+    extras_require={
+        'test': [
+            'zope.testrunner',
+        ],
+    },
+    include_package_data=True,
+    test_suite='zope.filerepresentation.tests.test_suite',
+    zip_safe=True,
+)

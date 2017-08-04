@@ -22,7 +22,4 @@ class Test(unittest.TestCase):
         from zope.filerepresentation import interfaces
 
 def test_suite():
-    loader=unittest.TestLoader()
-    return unittest.TestSuite((
-        loader.loadTestsFromTestCase(Test),
-        ))
+    return unittest.defaultTestLoader.loadTestsFromName(__name__)
