@@ -17,13 +17,13 @@ synchronization, FTP, PUT, and WebDAV.
 
 There are three issues we need to deal with:
 
-  File system representation
+* File system representation
 
     Every object is either a directory or a file.
 
-  Properties
+* Properties
 
-    There are two kinds of proprties:
+    There are two kinds of properties:
 
     - Data properties
 
@@ -33,7 +33,7 @@ There are three issues we need to deal with:
 
       Meta data properties are handled via annotations.
 
-  Completeness
+* Completeness
 
     We must have a complete lossless data representation for file-system
     synchronization. This is achieved through serialization of:
@@ -42,11 +42,11 @@ There are three issues we need to deal with:
 
     - Extra data.
 
-  Strategies for common access mechanisms:
+Strategies for common access mechanisms:
 
-    FTP
+* FTP
 
-      - For getting directory info (statish) information:
+    For getting directory info (statish) information:
 
         - Use Zope DublinCore to get modification times
 
@@ -54,32 +54,32 @@ There are three issues we need to deal with:
 
         - Show as writable if we can access a write method.
 
-    FTP and WebDAV
+* FTP and WebDAV
 
-      - Treat as a directory if there is an adapter to `IReadDirectory`.
-        Treat as a file otherwise.
+    - Treat as a directory if there is an adapter to :class:`IReadDirectory`.
+      Treat as a file otherwise.
 
-      - For creating objects:
+    - For creating objects:
 
         - Directories:
 
-          Look for an `IDirectoryFactory` adapter.
+          Look for an :class:`IDirectoryFactory` adapter.
 
         - Files
 
-          First lookj for a `IFileFactory` adapter with a name that is
+          First look for a :class:`IFileFactory` adapter with a name that is
           the same as the extention (e.g. ".pt").
 
-          Then look for an unnamed `IFileFactory` adapter.
+          Then look for an unnamed :class:`IFileFactory` adapter.
 
 
-    File-system synchronization
+* File-system synchronization
 
       Because this must be lossless, we will use class-based adapters
       for this, but we want to make it as easy as possible to use other
       adapters as well.
 
-      For reading, there must be a class adapter to `IReadSync`.  We will
+      For reading, there must be a class adapter to :class:`IReadSync`.  We will
       then apply rules similar to those above.
 """
 __docformat__ = 'restructuredtext'
@@ -87,8 +87,9 @@ __docformat__ = 'restructuredtext'
 from zope.interface import Interface
 from zope import schema
 
-from zope.interface.common.mapping import IEnumerableMapping, IItemMapping, \
-    IReadMapping
+from zope.interface.common.mapping import IEnumerableMapping
+from zope.interface.common.mapping import IItemMapping
+from zope.interface.common.mapping import IReadMapping
 
 
 class IReadFile(Interface):
@@ -115,36 +116,36 @@ class ICommonFileOperations(Interface):
     """
 
     mimeType = schema.ASCIILine(
-            title=u"File MIME type",
-            description=u"Provided if it makes sense for this file data. "    +
-                        u"May be set prior to writing data to a file that " +
-                        u"is writeable. It is an error to set this on a "   +
-                        u"file that is not writable.",
-            readonly=True,
-        )
+        title=u"File MIME type",
+        description=(u"Provided if it makes sense for this file data. "
+                     u"May be set prior to writing data to a file that "
+                     u"is writeable. It is an error to set this on a "
+                     u"file that is not writable."),
+        readonly=True,
+    )
 
     encoding = schema.Bool(
-            title=u"The encoding that this file uses",
-            description=u"Provided if it makes sense for this file data. "    +
-                        u"May be set prior to writing data to a file that " +
-                        u"is writeable. It is an error to set this on a "   +
-                        u"file that is not writable.",
-            required=False,
-        )
+        title=u"The encoding that this file uses",
+        description=(u"Provided if it makes sense for this file data. "
+                     u"May be set prior to writing data to a file that "
+                     u"is writeable. It is an error to set this on a "
+                     u"file that is not writable."),
+        required=False,
+    )
 
     closed = schema.Bool(
-            title=u"Is the file closed?",
-            required=True,
-        )
+        title=u"Is the file closed?",
+        required=True,
+    )
 
     name = schema.TextLine(
-            title=u"A representative file name",
-            description=u"Provided if it makes sense for this file data. "    +
-                        u"May be set prior to writing data to a file that " +
-                        u"is writeable. It is an error to set this on a "   +
-                        u"file that is not writable.",
-            required=False,
-        )
+        title=u"A representative file name",
+        description=(u"Provided if it makes sense for this file data. "
+                     u"May be set prior to writing data to a file that "
+                     u"is writeable. It is an error to set this on a "
+                     u"file that is not writable."),
+        required=False,
+    )
 
     def seek(offset, whence=None):
         """Seek the file. See Python documentation for :class:`io.IOBase` for

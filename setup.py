@@ -70,6 +70,11 @@ setup(
         'test': [
             'zope.testrunner',
         ],
+        'docs': [
+            'Sphinx',
+            'repoze.sphinx.autointerface',
+            'sphinx_rtd_theme',
+        ],
     },
     include_package_data=True,
     test_suite='zope.filerepresentation.tests.test_suite',
