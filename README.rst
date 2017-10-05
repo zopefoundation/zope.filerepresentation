@@ -10,7 +10,7 @@
         :target: https://pypi.org/project/zope.filerepresentation/
         :alt: Supported Python versions
 
-.. image:: https://travis-ci.org/zopefoundation/zope.filerepresentation.png?branch=master
+.. image:: https://travis-ci.org/zopefoundation/zope.filerepresentation.svg?branch=master
         :target: https://travis-ci.org/zopefoundation/zope.filerepresentation
 
 .. image:: https://coveralls.io/repos/github/zopefoundation/zope.filerepresentation/badge.svg?branch=master
