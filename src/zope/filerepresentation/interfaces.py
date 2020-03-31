@@ -84,12 +84,16 @@ Strategies for common access mechanisms:
 """
 __docformat__ = 'restructuredtext'
 
+# Pylint helpfully catches class definition errors, but they don't apply to
+# interfaces.
+# pylint:disable=inherit-non-class,no-method-argument,no-self-argument
+# pylint:disable=unexpected-special-method
+
 from zope.interface import Interface
 from zope import schema
 
 from zope.interface.common.mapping import IEnumerableMapping
-from zope.interface.common.mapping import IItemMapping
-from zope.interface.common.mapping import IReadMapping
+
 
 
 class IReadFile(Interface):
@@ -217,7 +221,7 @@ class IRawWriteFile(IWriteFile, ICommonFileOperations):
         """Flush the file. See Python documentation for :class:`io.IOBase` for details.
         """
 
-class IReadDirectory(IEnumerableMapping, IItemMapping, IReadMapping):
+class IReadDirectory(IEnumerableMapping):
     """Objects that should be treated as directories for reading
     """
 
