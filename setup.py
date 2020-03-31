@@ -27,7 +27,7 @@ def read(*rnames):
 
 setup(
     name='zope.filerepresentation',
-    version='5.0.0',
+    version='5.0.1.dev0',
     author='Zope Corporation and Contributors',
     author_email='zope-dev@zope.org',
     description='File-system Representation Interfaces',
