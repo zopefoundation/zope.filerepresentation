@@ -87,7 +87,7 @@ __docformat__ = 'restructuredtext'
 # Pylint helpfully catches class definition errors, but they don't apply to
 # interfaces.
 # pylint:disable=inherit-non-class,no-method-argument,no-self-argument
-# pylint:disable=unexpected-special-method
+# pylint:disable=unexpected-special-method-signature
 
 from zope.interface import Interface
 from zope import schema
@@ -229,8 +229,8 @@ class IWriteDirectory(Interface):
     """Objects that should be treated as directories for writing
     """
 
-    def __setitem__(name, object):
-        """Add the given `object` to the directory under the given name."""
+    def __setitem__(name, object): # pylint:disable=redefined-builtin
+        """Add the given *object* to the directory under the given name."""
 
     def __delitem__(name):
         """Delete the named object from the directory."""
@@ -239,7 +239,7 @@ class IWriteDirectory(Interface):
 class IDirectoryFactory(Interface):
     """Factory for :class:`IReadDirectory`/:class:`IWriteDirectory` objects."""
 
-    def __call__(name):
+    def __call__(name): # pylint:disable=signature-differs
         """Create a directory
 
         where a directory is an object with adapters to IReadDirectory
@@ -250,7 +250,7 @@ class IDirectoryFactory(Interface):
 class IFileFactory(Interface):
     """Factory for :class:`IReadFile`/:class:`IWriteFile` objects."""
 
-    def __call__(name, content_type, data):
+    def __call__(name, content_type, data): # pylint:disable=signature-differs
         """Create a file
 
         where a file is an object with adapters to `IReadFile`
