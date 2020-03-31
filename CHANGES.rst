@@ -2,12 +2,15 @@
  Changes
 =========
 
-5.0 (unreleased)
+5.0.0 (unreleased)
 ==================
 
 - Drop support for Python 3.4.
 
-- Add Support for Python 3.7.
+- Add support for Python 3.7 and 3.8.
+
+- Ensure all objects have a consistent interface resolution order.
+  See `issue 7 <https://github.com/zopefoundation/zope.filerepresentation/issues/7>`_.
 
 
 4.2.0 (2017-08-10)
@@ -54,13 +57,13 @@
 3.6.0 (2009-10-08)
 ==================
 
-- Add `IRawReadFile` and `IRawWriteFile` interfaces. These extend
-  `IReadFile` and `IWritefile`, respectively, to behave pretty much like a
+- Add ``IRawReadFile`` and ``IRawWriteFile`` interfaces. These extend
+  ``IReadFile`` and ``IWritefile``, respectively, to behave pretty much like a
   standard Python file object with a few embellishments. This in turn allows
   efficient, iterator- based implementations of file reading and writing.
 
-- Remove dependency on ``zope.container``: `IReadDirectory` and
-  `IWriteDirectory` inherit only from interfaces defined in ``zope.interface``
+- Remove dependency on ``zope.container``: ``IReadDirectory`` and
+  ``IWriteDirectory`` inherit only from interfaces defined in ``zope.interface``
   and ``zope.interface.common.mapping``.
 
 3.5.0 (2009-01-31)
