@@ -90,10 +90,9 @@ __docformat__ = 'restructuredtext'
 # pylint:disable=unexpected-special-method-signature
 
 from zope.interface import Interface
-from zope import schema
-
 from zope.interface.common.mapping import IEnumerableMapping
 
+from zope import schema
 
 
 class IReadFile(Interface):
