@@ -11,9 +11,9 @@
 ##############################################################################
 """File-system representation interfaces
 
-The interfaces defined here are used for file-system and
-file-system-like representations of objects, such as file-system
-synchronization, FTP, PUT, and WebDAV.
+The interfaces defined here are used for file-system and file-system-like
+representations of objects, such as file-system synchronization, FTP, PUT, and
+WebDAV.
 
 There are three issues we need to deal with:
 
@@ -46,7 +46,7 @@ Strategies for common access mechanisms:
 
 * FTP
 
-    For getting directory info (statish) information:
+    For getting directory info (static) information:
 
         - Use Zope DublinCore to get modification times
 
@@ -75,12 +75,11 @@ Strategies for common access mechanisms:
 
 * File-system synchronization
 
-      Because this must be lossless, we will use class-based adapters
-      for this, but we want to make it as easy as possible to use other
-      adapters as well.
+      Because this must be lossless, we will use class-based adapters for this,
+      but we want to make it as easy as possible to use other adapters as well.
 
-      For reading, there must be a class adapter to :class:`IReadSync`.  We will
-      then apply rules similar to those above.
+      For reading, there must be a class adapter to :class:`IReadSync`.  We
+      will then apply rules similar to those above.
 """
 __docformat__ = 'restructuredtext'
 
@@ -107,6 +106,7 @@ class IReadFile(Interface):
         """Return the data length in bytes.
         """
 
+
 class IWriteFile(Interface):
     """Provide write access to file data."""
 
@@ -114,8 +114,10 @@ class IWriteFile(Interface):
         """Update the file data
         """
 
+
 class ICommonFileOperations(Interface):
-    """Common file operations used by :class:`IRawReadFile` and :class:`IRawWriteFile`
+    """Common file operations used by :class:`IRawReadFile` and
+    :class:`IRawWriteFile`
     """
 
     mimeType = schema.ASCIILine(
@@ -164,6 +166,7 @@ class ICommonFileOperations(Interface):
         details.
         """
 
+
 class IRawReadFile(IReadFile, ICommonFileOperations):
     """Specialisation of IReadFile to make it act more like a Python file
     object.
@@ -181,20 +184,23 @@ class IRawReadFile(IReadFile, ICommonFileOperations):
 
     def readlines(sizehint=None):
         """Read until EOF using readline() and return a list containing the
-        lines thus read. See Python documentation for :class:`io.IOBase` for details.
+        lines thus read. See Python documentation for :class:`io.IOBase` for
+        details.
         """
 
     def __iter__():
         """Return an iterator for the file.
 
-        Note that unlike a Python standard :class:`file`, this does not necessarily
-        have to return data line-by-line if doing so is inefficient.
+        Note that unlike a Python standard :class:`file`, this does not
+        necessarily have to return data line-by-line if doing so is
+        inefficient.
         """
 
     def next():
-        """Iterator protocol. See Python documentation for :class:`io.IOBase` for
-        details.
+        """Iterator protocol. See Python documentation for :class:`io.IOBase`
+        for details.
         """
+
 
 class IRawWriteFile(IWriteFile, ICommonFileOperations):
     """Specialisation of IWriteFile to make it act more like a Python file
@@ -212,23 +218,26 @@ class IRawWriteFile(IWriteFile, ICommonFileOperations):
         """
 
     def truncate(size):
-        """Truncate the file. See Python documentation for :class:`io.IOBase` for
-        details.
+        """Truncate the file. See Python documentation for :class:`io.IOBase`
+        for details.
         """
 
     def flush():
-        """Flush the file. See Python documentation for :class:`io.IOBase` for details.
+        """Flush the file. See Python documentation for :class:`io.IOBase` for
+        details.
         """
+
 
 class IReadDirectory(IEnumerableMapping):
     """Objects that should be treated as directories for reading
     """
 
+
 class IWriteDirectory(Interface):
     """Objects that should be treated as directories for writing
     """
 
-    def __setitem__(name, object): # pylint:disable=redefined-builtin
+    def __setitem__(name, object):  # pylint:disable=redefined-builtin
         """Add the given *object* to the directory under the given name."""
 
     def __delitem__(name):
@@ -238,7 +247,7 @@ class IWriteDirectory(Interface):
 class IDirectoryFactory(Interface):
     """Factory for :class:`IReadDirectory`/:class:`IWriteDirectory` objects."""
 
-    def __call__(name): # pylint:disable=signature-differs
+    def __call__(name):  # pylint:disable=signature-differs
         """Create a directory
 
         where a directory is an object with adapters to IReadDirectory
@@ -246,10 +255,11 @@ class IDirectoryFactory(Interface):
 
         """
 
+
 class IFileFactory(Interface):
     """Factory for :class:`IReadFile`/:class:`IWriteFile` objects."""
 
-    def __call__(name, content_type, data): # pylint:disable=signature-differs
+    def __call__(name, content_type, data):  # pylint:disable=signature-differs
         """Create a file
 
         where a file is an object with adapters to `IReadFile`
