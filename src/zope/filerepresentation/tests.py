@@ -20,7 +20,4 @@ class Test(unittest.TestCase):
     def testImports(self):
         # Just test that the interfaces import, which should provide full
         # coverage.
-        from zope.filerepresentation import interfaces
-
-def test_suite():
-    return unittest.defaultTestLoader.loadTestsFromName(__name__)
+        from zope.filerepresentation import interfaces  # noqa: F401 unused

@@ -28,6 +28,7 @@ def read(*rnames):
     with open(os.path.join(os.path.dirname(__file__), *rnames)) as f:
         return f.read()
 
+
 setup(
     name='zope.filerepresentation',
     version='5.0.1.dev0',
