@@ -121,34 +121,34 @@ class ICommonFileOperations(Interface):
     """
 
     mimeType = schema.ASCIILine(
-        title=u"File MIME type",
-        description=(u"Provided if it makes sense for this file data. "
-                     u"May be set prior to writing data to a file that "
-                     u"is writeable. It is an error to set this on a "
-                     u"file that is not writable."),
+        title="File MIME type",
+        description=("Provided if it makes sense for this file data. "
+                     "May be set prior to writing data to a file that "
+                     "is writeable. It is an error to set this on a "
+                     "file that is not writable."),
         readonly=True,
     )
 
     encoding = schema.Bool(
-        title=u"The encoding that this file uses",
-        description=(u"Provided if it makes sense for this file data. "
-                     u"May be set prior to writing data to a file that "
-                     u"is writeable. It is an error to set this on a "
-                     u"file that is not writable."),
+        title="The encoding that this file uses",
+        description=("Provided if it makes sense for this file data. "
+                     "May be set prior to writing data to a file that "
+                     "is writeable. It is an error to set this on a "
+                     "file that is not writable."),
         required=False,
     )
 
     closed = schema.Bool(
-        title=u"Is the file closed?",
+        title="Is the file closed?",
         required=True,
     )
 
     name = schema.TextLine(
-        title=u"A representative file name",
-        description=(u"Provided if it makes sense for this file data. "
-                     u"May be set prior to writing data to a file that "
-                     u"is writeable. It is an error to set this on a "
-                     u"file that is not writable."),
+        title="A representative file name",
+        description=("Provided if it makes sense for this file data. "
+                     "May be set prior to writing data to a file that "
+                     "is writeable. It is an error to set this on a "
+                     "file that is not writable."),
         required=False,
     )
 
