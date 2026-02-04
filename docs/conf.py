@@ -23,12 +23,12 @@
 # needs_sphinx = '1.0'
 import os
 import sys
-
-import pkg_resources
+from datetime import datetime
+from importlib import metadata
 
 
 sys.path.append(os.path.abspath('../src'))
-rqmt = pkg_resources.require('zope.filerepresentation')[0]
+rqmt = metadata.distribution('zope.filerepresentation')
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -55,7 +55,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'zope.filerepresentation'
-copyright = '2016-2025, Zope Foundation and Contributors'
+copyright = f'2016-{datetime.now().year}, Zope Foundation and Contributors'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
